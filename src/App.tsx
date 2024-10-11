@@ -1,5 +1,5 @@
-import Header from "./components/Header.js";
-import Login from "./components/Login.js";
+import Header from "./components/Header/Header.js";
+import Login from "./components/Login/Login.js";
 
 function App() {
   return (
