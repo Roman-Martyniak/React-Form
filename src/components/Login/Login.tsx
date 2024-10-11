@@ -8,6 +8,7 @@ export default function Login() {
     handleChange: handleEmailChange,
     handleInputBlur: handleEmailBlue,
     hasError: emailHasError,
+    reset: emailReset,
   } = useInput("", (value: string) => {
     return isEmail(value) && isNotEmpty(value);
   });
@@ -17,6 +18,7 @@ export default function Login() {
     handleChange: handlePasswordChange,
     handleInputBlur: handlePasswordBlur,
     hasError: passwordHasError,
+    reset: passwordReset,
   } = useInput("", (value: string) => hasMinLength(value, 6));
 
   function handleSubmit(event: React.FormEvent) {
@@ -25,6 +27,11 @@ export default function Login() {
     if (emailHasError || passwordHasError) {
       return;
     }
+  }
+
+  function handleReset() {
+    emailReset();
+    passwordReset();
   }
 
   return (
@@ -56,7 +63,9 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <button className="button button-flat">Reset</button>
+        <button className="button button-flat" onClick={handleReset}>
+          Reset
+        </button>
         <button className="button">Login</button>
       </p>
     </form>

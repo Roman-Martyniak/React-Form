@@ -19,10 +19,16 @@ export function useInput(
     setDidEdit(true);
   }
 
+  function reset() {
+    setValue(defaultValue);
+    setDidEdit(false);
+  }
+
   return {
     value: value,
     handleChange,
     handleInputBlur,
     hasError: didEdit && !valueIsValid,
+    reset,
   };
 }
